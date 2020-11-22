@@ -10,7 +10,7 @@ class ModeloController extends Controller
     public function index()
     {
         $modelos = Modelo::all();
-        return view('modelos.index' , compact('modelos'));
+        return view('modelos.index', compact('modelos'));
     }
 
     public function create(Request $request) //Criar
@@ -18,14 +18,33 @@ class ModeloController extends Controller
 
         return view('modelos.create');
     }
+
     public function store(Request $request)
     {
         Modelo::create($request->all());
 
         return redirect()->route('modelos.index');
     }
-    public function edit() //Criar
+
+    public function edit($id) //Editar
     {
-        return view('modelos.edit');
+        $modelo = Modelo::find($id);
+        return view('modelos.edit', compact('modelo'));
     }
+
+    public function update(Request $request , $id)
+    {
+        $modelo = Modelo::find($id)->update($request->all());
+        return redirect()->route('modelos.index');
+    }
+
+    public function delete($id) //destroy para deletar
+    {
+        $modelo = Modelo::find($id)->delete();
+        return redirect()->route('modelos.index');
+    }
+
+
+
+
 }

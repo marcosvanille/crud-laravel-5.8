@@ -6,7 +6,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                        <h1 id="titulo">Editar  Cadastro</h1>
+                        <h1 id="titulo">Editar Cadastro</h1>
                         <a href="{{url('/modelos') }}">Voltar</a>
                     </div>
 
@@ -17,12 +17,14 @@
                             </div>
                         @endif
 
-                        <form action="{{ route('modelos.store') }}" method="post">
+                        <form action="{{route('modelos.update' , ['modelo'=> $modelo->id])}}" method="POST">
                             @csrf
+                            @method('PUT')
                             <div class="form-row">
                                 <div class="form-group col-md-10">
                                     <label for="inputNome" class="lb">Nome Completo </label>
-                                    <input type="text" class="form-control" id="inputNome" name="nome" required>
+                                    <input type="text" class="form-control" id="inputNome" name="nome"
+                                           value="{{$modelo->nome}}" required>
                                 </div>
 
                             </div>
@@ -30,24 +32,24 @@
                                 <div class="form-group col-md-6">
                                     <label for="email" class="lb">Email:</label>
                                     <input type="email" class="form-control" id="email"
-                                           name="email"/>
+                                           name="email" value="{{$modelo->email}}"/>
                                     <span id="error-email"></span>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="inputFone" class="lb">Telefone</label>
                                     <input type="text" class="form-control" id="inputFone" placeholder=""
-                                           name="telefone" required>
+                                           name="telefone" value="{{$modelo->telefone}}" required>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="inputAddress" class="lb">Endereço</label>
                                     <input type="text" class="form-control" id="inputAddress" placeholder=""
-                                           name="endereco">
+                                           name="endereco" value="{{$modelo->endereco}}">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="inputCidade" class="lb">Cidade</label>
-                                    <input type="text" class="form-control" id="inputCidade" name="cidade">
+                                    <input type="text" class="form-control" id="inputCidade" name="cidade" value="{{$modelo->cidade}}">
                                 </div>
                             </div>
 
@@ -55,7 +57,7 @@
                             <div class="form-row  ">
                                 <div class="form-group col-md-3">
                                     <label for="inputTipo" class="lb">Tipo</label>
-                                    <select id="inputTipo" class="form-control" name="tipo">
+                                    <select id="inputTipo" class="form-control" name="tipo" >
                                         <option value="Esportivo">Esportivo</option>
                                         <option value="Comum">Comum</option>
                                     </select>
@@ -63,12 +65,12 @@
 
                                 <div class="form-group col-md-3">
                                     <label for="inputPreco" class="lb">Faixa de Preço</label>
-                                    <input id="inputPreco" class="form-control" name="preco"/>
+                                    <input id="inputPreco" class="form-control" name="preco" value="{{$modelo->preco}}"/>
                                 </div>
 
                                 <div class="form-group col-md-4">
                                     <label for="inputCarro" class="lb">Carros</label>
-                                    <select id="inputCarro" class="form-control" name="carros">
+                                    <select id="inputCarro" class="form-control" name="carros" >
                                         <option value="Uno">Uno</option>
                                         <option value="Golf">Golf</option>
                                         <option value="Gol">Gol</option>

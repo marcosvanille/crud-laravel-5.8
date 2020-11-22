@@ -49,11 +49,8 @@
                                     </td>
 
                                     <td>
-                                        <form action="" method="post">
-                                            @csrf
-                                            @method('delete')
-                                            <button class="btn btn-danger">Deletar</button>
-                                        </form>
+                                        <a href="{{route('modelos.delete', ['modelo' => $modelo->id])}}" class="btn btn-danger">Deletar</a>
+
                                     </td>
                                 </tr>
 

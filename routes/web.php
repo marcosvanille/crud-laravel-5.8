@@ -20,3 +20,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 //Route::get('/modelos', 'ModeloController@index')->name('index');
 Route::resource('modelos' , 'ModeloController');
+Route::get('/modelos/{modelo}/delete', 'ModeloController@delete')->name('modelos.delete');
+
