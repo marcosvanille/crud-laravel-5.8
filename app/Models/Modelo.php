@@ -14,7 +14,7 @@ class Modelo extends Model
         'email',
         'telefone',
         'endereco',
-        'cidade ',
+        'cidade',
         'tipo',
         'preco',
         'carros',
